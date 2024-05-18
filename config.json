@@ -1,0 +1,14 @@
+{
+    "ip": "localhost",
+    "plextoken": "plextoken",
+    "watchdownloads": true,
+    "qbittorrent": {
+        "username": "username",
+        "password": "password"
+    },
+    "notification": true,
+    "telegram": {
+        "token": "token",
+        "chat_id": "chat_id"
+    }
+}
