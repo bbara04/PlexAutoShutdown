@@ -11,7 +11,7 @@ The goal of this project is to automatically shut down the server, taking into a
 ## Project Setup
 #### Clone the repository
 ```bash
-git clone https://your-repo-url.git
+git clone https://github.com/bbara04/PlexAutoShutdown.git
 ```
 
 #### Change Directory to repo
