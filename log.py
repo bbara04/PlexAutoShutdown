@@ -7,7 +7,7 @@ import datetime
 def log():
     try:
         # Get configuration from the config.json file
-        config = json.load(open('./config.json'))
+        config = json.load(open('/home/bbara/PlexAutoShutdown/config.json'))
         
         # Define the URL
         url = f"http://{config['ip']}:32400/status/sessions/?X-Plex-Token={config['plextoken']}"
@@ -19,18 +19,18 @@ def log():
 
             root = ET.fromstring(response.text)
 
-            current_wathcing = None
+            current_watching = None
 
             # Get current watchers
             for item in root.iter():
                 if item.tag == 'MediaContainer':
-                    current_wathcing = item.attrib['size']
+                    current_watching = item.attrib['size']
 
             # Write current date to log file 
             # Format: (YYYY.MM.DD HH:MM)
             # Example: 2023.12.31 23:59
-            if int(current_wathcing) > 0:
-                open('./log', 'w').write(datetime.datetime.now().strftime('%Y.%m.%d %H:%M'))
+            if int(current_watching) > 0:
+                open('/home/bbara/PlexAutoShutdown/log', 'w').write(datetime.datetime.now().strftime('%Y.%m.%d %H:%M'))
 
     except requests.exceptions.RequestException as e:
         print(e)

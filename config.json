@@ -1,14 +1,14 @@
 {
     "ip": "localhost",
-    "plextoken": "plextoken",
+    "plextoken": "_AyyYC6Vy-pLbCBspgxa",
     "watchdownloads": true,
     "qbittorrent": {
-        "username": "username",
-        "password": "password"
+        "username": "admin",
+        "password": "adminadmin"
     },
     "notification": true,
     "telegram": {
-        "token": "token",
-        "chat_id": "chat_id"
+        "token": "5499872795:AAGG2XQ-dbjkGZFIDYPdbvvdJa0XN6WYOHo",
+        "chat_id": "5302671789"
     }
 }
