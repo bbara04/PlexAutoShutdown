@@ -34,9 +34,13 @@ if(get_uptime()<(int(sys.argv[1])*60)):
 if(config['watchdownloads'] == False or isFileDownloading(config['ip'], config['qbittorrent']['username'], config['qbittorrent']['password'])):
     sys.exit(0)
 
-# If the last watched content is older than the specified time, shutdown
+# If the last watched content is older than the specified time, shutdown or hibernate the system
 if(datetime.datetime.now() - last_watched > datetime.timedelta(minutes=int(sys.argv[1]))):
-    #os.system('sudo shutdown')
-    if(config['notification'] == True):
-        notify('Shutdown', config['telegram']['token'], config['telegram']['chat_id'])
+    if(sys.argv[2] == 'shutdown'):
+        os.system('sudo shutdown')
+        if(config['notification'] == True):
+            notify('Server has been powered off', config['telegram']['token'], config['telegram']['chat_id'])
+    elif(sys.argv[2] == 'suspend'):
+        os.system('sudo systemctl suspend')
+
     
