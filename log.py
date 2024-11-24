@@ -36,5 +36,3 @@ def log():
         print(e)
     except Exception as e:
         print(e)
-
-log()

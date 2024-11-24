@@ -15,5 +15,8 @@ def notify(message, token, chat_id):
         response = requests.post(url, data=payload)
         response.raise_for_status()  # Raise an exception for HTTP errors
         print("Message sent successfully")
+        return True
     except requests.exceptions.RequestException as e:
         print(f"Failed to send message: {e}")
+        raise Exception("Failed to send message")
+    
