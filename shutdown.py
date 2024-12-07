@@ -69,6 +69,6 @@ except:
 if(datetime.datetime.now() - last_watched > datetime.timedelta(minutes=int(sys.argv[1]))):
     curdate = datetime.datetime.now()
     msg = str("Server has been suspended at " + curdate.strftime('%H:%M'))
-    notify(msg, "5499872795:AAGG2XQ-dbjkGZFIDYPdbvvdJa0XN6WYOHo", "5302671789")
+    notify(msg, config['telegram']['token'], config['telegram']['chat_id'])
     print('suspend')
     subprocess.run(['bash', os.path.join(path, "suspend.sh")], capture_output=False, text=True)

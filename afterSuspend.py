@@ -18,7 +18,7 @@ if (datetime.datetime.now() > last_suspend + datetime.timedelta(minutes=179)):
         try:
             curdate = datetime.datetime.now()
             msg = str("Server has been shutdown at " + curdate.strftime('%H:%M'))
-            isSent = notify(msg, "5499872795:AAGG2XQ-dbjkGZFIDYPdbvvdJa0XN6WYOHo", "5302671789")
+            isSent = notify(msg, "7634927453:AAHKziilCwPPLub2iFAUESttmAqqDY4pZPQ", "5302671789")
         except:
             print("Couldn't send the telegram message")
             tryCount += 1
