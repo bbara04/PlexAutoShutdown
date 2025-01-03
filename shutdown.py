@@ -67,8 +67,5 @@ except:
 
 # If the last watched content is older than the specified time, shutdown or hibernate the system
 if(datetime.datetime.now() - last_watched > datetime.timedelta(minutes=int(sys.argv[1]))):
-    curdate = datetime.datetime.now()
-    msg = str("Server has been suspended at " + curdate.strftime('%H:%M'))
-    notify(msg, config['telegram']['token'], config['telegram']['chat_id'])
     print('suspend')
     subprocess.run(['bash', os.path.join(path, "suspend.sh")], capture_output=False, text=True)
