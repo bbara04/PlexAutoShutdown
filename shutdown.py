@@ -39,9 +39,11 @@ with open('/home/bbara/PlexAutoShutdown/uptime', 'r') as uptimefile:
     line = uptimefile.readline().strip()
     if (line == 'shutdown'):
         open(os.path.join(path, 'uptime'), 'w').write('0')
+        print('last time was a shutdown')
         sys.exit(0)
     elif (line == 'suspend'):
         open(os.path.join(path, 'uptime'), 'w').write(str(get_uptime()))
+        print('last time was a suspend')
         sys.exit(0)
     else:
         try:
@@ -61,6 +63,7 @@ else:
 # If conent is currently being downloaded, exit
 try:
     if(config['watchdownloads'] == True and isFileDownloading(config['ip'], config['qbittorrent']['username'], config['qbittorrent']['password'])):
+        print("File is downloading")
         sys.exit(0)
 except:
     print("Couldn't get response from qbittorrent client")
@@ -68,4 +71,6 @@ except:
 # If the last watched content is older than the specified time, shutdown or hibernate the system
 if(datetime.datetime.now() - last_watched > datetime.timedelta(minutes=int(sys.argv[1]))):
     print('suspend')
-    subprocess.run(['bash', os.path.join(path, "suspend.sh")], capture_output=False, text=True)
+    subprocess.run(['bash', os.path.join(path, "suspend.sh"), sys.argv[2]], capture_output=False, text=True)
+else:
+    print("Last watched time: " + last_watched.strftime('%Y.%m.%d %H:%M') + " threshold: " + sys.argv[1] + " minutes")

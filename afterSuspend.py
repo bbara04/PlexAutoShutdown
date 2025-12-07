@@ -10,7 +10,7 @@ with open('/home/bbara/PlexAutoShutdown/suspend', 'r') as readSuspend:
     line = readSuspend.readline().strip()
     last_suspend = datetime.datetime.strptime(line.strip(), '%Y.%m.%d %H:%M')
 
-if (datetime.datetime.now() > last_suspend + datetime.timedelta(minutes=179)):
+if (datetime.datetime.now() > last_suspend + datetime.timedelta(minutes=int(sys.argv[1])-1)):
     print("shutdown")
     isSent = False
     tryCount = 0
